@@ -35,7 +35,7 @@ export function SelectVehicleMake() {
     <>
       {/* Button to Open Modal */}
       <button
-        className="fixed top-[172px] md:top-[200px] z-20 btn_hotline"
+        className="fixed right-0 top-[172px] md:top-[200px] z-20 btn_hotline"
         onClick={() => setIsOpen(true)}
       >
         <div className="px-5 py-3 bg-primary text-whiteOne uppercase font-semibold">
