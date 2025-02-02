@@ -38,10 +38,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           isSidebarOpen
             ? "translate-x-0 duration-300 sm:duration-500 transform"
             : "-translate-x-full duration-300 transform"
-        } z-30`}
+        } z-40`}
       >
         {/* Sidebar Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-stone-800">
+        <div className="flex flex-col gap-6 pt-6 items-start justify-between px-5 py-4 border-b border-gray-200 dark:border-stone-800">
           {theme === "dark" ? (
             <Image
               src="/logo1-dark.png" // Dark theme logo
@@ -57,10 +57,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               height={50}
             />
           )}
+          <p className="text-slate-900 dark:text-whiteOne">We specialize in turbocharger rebuilding, replacement, upgrades, and new turbochargers.</p>
         </div>
 
         {/* Sidebar Navigation Links */}
-        <nav className="flex flex-col p-6 space-y-6 font-medium">
+        <nav className="flex flex-col p-6 space-y-6 font-medium text-lg">
+          
           <Link
             href="/"
             className="text-slate-900 dark:text-whiteOne hover:text-primary dark:hover:text-primaryhover transition"
@@ -74,13 +76,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             onClick={() => setIsSidebarOpen(false)}
           >
             UNIVERSAL PRODUCTS
-          </Link>
-          <Link
-            href="/product"
-            className="text-slate-900 dark:text-whiteOne hover:text-primary dark:hover:text-primaryhover transition"
-            onClick={() => setIsSidebarOpen(false)}
-          >
-            PRODUCT
           </Link>
           <Link
             href="/about"
@@ -127,7 +122,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 
       {/* Overlay (Click to close sidebar) */}
       <div
-        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-20 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-30 transition-opacity duration-300 ${
           isSidebarOpen
             ? "opacity-100 cursor-pointer"
             : "opacity-0 pointer-events-none"

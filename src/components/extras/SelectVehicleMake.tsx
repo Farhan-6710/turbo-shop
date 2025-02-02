@@ -4,9 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { TransitionLink } from "@/lib/TransitionLink";
+import { usePathname } from "next/navigation"; // Import usePathname
 
 export function SelectVehicleMake() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // Get the current pathname from the hook
 
   // List of vehicle makes
   const vehicleMakes = [
@@ -31,11 +33,14 @@ export function SelectVehicleMake() {
     { name: "VOLVO", path: "/volvo-products" },
   ];
 
+  // Dynamically set the top position based on the current path
+  const buttonTopPosition = pathname === "/" ? "top-[170px]" : "top-[273px]";
+
   return (
     <>
       {/* Button to Open Modal */}
       <button
-        className="fixed right-0 top-[172px] md:top-[200px] z-20 btn_hotline"
+        className={`fixed right-0 ${buttonTopPosition} md:top-[200px] z-20 btn_hotline`}
         onClick={() => setIsOpen(true)}
       >
         <div className="px-5 py-3 bg-primary text-whiteOne uppercase font-semibold">

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React, { useCallback, useEffect } from "react";
 import PopularProductsCarousel from "./PopularProductsCarousel";
 import useEmblaCarousel from "embla-carousel-react";
-import { LucideChevronLeft, LucideChevronRight } from "lucide-react";
+import PopularProductsNavigation from "./PopularProductsNavigation";
 
 const PopularProductsSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -29,37 +29,15 @@ const PopularProductsSection = () => {
         <h2 className="text-blackTwo dark:text-white text-4xl uppercase font-bold">
           Popular Products
         </h2>
-        <div className="flex gap-4">
-          <ul className="flex justify-center items-center gap-4 carousel_arrow text-md">
-            <li>
-              <button
-                className="flex justify-center items-center"
-                onClick={scrollPrev}
-              >
-                <LucideChevronLeft
-                  name="ChevronLeft"
-                  strokeWidth={2}
-                  size={30}
-                />
-              </button>
-            </li>
-            <li>
-              <button
-                className="flex justify-center items-center"
-                onClick={scrollNext}
-              >
-                <LucideChevronRight
-                  name="ChevronRight"
-                  strokeWidth={2}
-                  size={30}
-                />
-              </button>
-            </li>
-          </ul>
+        <div className="hidden sm:flex">
+          <PopularProductsNavigation  scrollPrev={scrollPrev} scrollNext={scrollNext} />
         </div>
       </div>
       <div>
         <PopularProductsCarousel emblaRef={emblaRef} />
+      </div>
+      <div className="flex sm:hidden justify-center items-center pt-6">
+        <PopularProductsNavigation scrollPrev={scrollPrev} scrollNext={scrollNext} />
       </div>
     </section>
   );
