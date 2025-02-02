@@ -1,0 +1,2 @@
+export const commonDescription =
+  "UK Manufactured cartridges to the highest standards which are high speed balanced. These cartridges are the perfect replacements for old and worn cartridges, without having to spend money on brand new turbos or taking chances on used turbos. If the turbocharger is internally damaged, or if the turbocharger seals are leaking oil this will resolve the issue.\n\n Please diagnose for boost leaks, failed wastegates and source of turbo failure to ensure a successful repair.";
