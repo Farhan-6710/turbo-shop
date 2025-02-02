@@ -27,7 +27,7 @@ const AboutSection: React.FC = () => {
         <div className="lg:w-1/2 flex justify-center dark:bg-blackOne bg-whiteOne py-12">
           <div className="w-3/4">
             <Image
-              src="/product_img_2.png"
+              src="/hero-img.png"
               alt="About Us Image"
               width={600}
               height={400}

@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 const usePreLoaderAnimation = () => {
-  useEffect(() => {
-    // Save the current scroll position before starting the animation
+  useLayoutEffect(() => {
     const body = document.querySelector("body");
     const scrollPosition = window.scrollY;
 
@@ -13,7 +12,6 @@ const usePreLoaderAnimation = () => {
 
     // Remove the transition class after the animation completes (500ms)
     const timer = setTimeout(() => {
-      // Remove transition class
       body?.classList.remove("page-transition");
 
       // Restore the scroll position after the transition
@@ -21,7 +19,7 @@ const usePreLoaderAnimation = () => {
     }, 500); // Match this delay with the transition duration
 
     return () => clearTimeout(timer);
-  }, []);
+  }, []); // Empty dependency array ensures it runs once when mounted
 };
 
 export default usePreLoaderAnimation;

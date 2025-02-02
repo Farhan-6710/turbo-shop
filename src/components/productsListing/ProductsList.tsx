@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import { ShoppingCart } from "lucide-react";
-import { Product } from "@/lib/productTypes";
+import { Product } from "@/lib/testingProductsTypes";
 
 interface ProductsListProps {
   productsData: Product[];
@@ -57,30 +57,29 @@ const ProductsList: React.FC<ProductsListProps> = ({ productsData }) => {
                   <div className="flex flex-col justify-between">
                     <div className="flex gap-2 items-center">
                       <span className="text-xl font-bold text-blackTwo dark:text-white">
-                        {product.leftUsdPrice ? product.leftUsdPrice : "N/A"}
+                        {product.prices.usd.leftCurrent || "N/A"}
                       </span>
                       <span className="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">
-                        {product.leftUsdOriginalPrice
-                          ? product.leftUsdOriginalPrice
-                          : "N/A"}
+                        {product.prices.usd.leftOriginal || "N/A"}
                       </span>
                     </div>
 
                     <p
                       className="text-xs sm:text-sm mb-4 text-gray-600 dark:text-gray-400"
                       dangerouslySetInnerHTML={{
-                        __html: `OEM Left Part Number : ${product.leftPartNumber ? product.leftPartNumber : "N/A"}`,
+                        __html: `OEM Left Part Number : ${
+                          product.leftPartNumber || "N/A"
+                        }`,
                       }}
-                      
                     />
 
                     <Button
                       variant="default"
                       className="flex items-center gap-2 rounded-none btn-primary py-6 text-lg w-fit px-8"
-                      disabled={!product.leftUsdPrice}
+                      disabled={!product.prices.usd.leftCurrent}
                     >
                       <ShoppingCart strokeWidth={3} size={20} />
-                      {product.leftUsdPrice ? "Add to Cart" : "Not Available"}
+                      {product.prices.usd.leftCurrent ? "Add to Cart" : "Not Available"}
                     </Button>
                   </div>
                 </div>
@@ -93,29 +92,29 @@ const ProductsList: React.FC<ProductsListProps> = ({ productsData }) => {
                   <div className="flex flex-col justify-between">
                     <div className="flex gap-2 items-center">
                       <span className="text-xl font-bold text-blackTwo dark:text-white">
-                        {product.rightUsdPrice ? product.rightUsdPrice : "N/A"}
+                        {product.prices.usd.rightCurrent || "N/A"}
                       </span>
                       <span className="text-sm text-gray-500 dark:text-gray-400 line-through ml-2">
-                        {product.rightUsdOriginalPrice
-                          ? product.rightUsdOriginalPrice
-                          : "N/A"}
+                        {product.prices.usd.rightOriginal || "N/A"}
                       </span>
                     </div>
 
                     <p
                       className="text-xs sm:text-sm mb-4 text-gray-600 dark:text-gray-400"
                       dangerouslySetInnerHTML={{
-                        __html: `OEM Right Part Number : ${product.rightPartNumber ? product.rightPartNumber : "N/A"}`,
-                      }}                      
+                        __html: `OEM Right Part Number : ${
+                          product.rightPartNumber || "N/A"
+                        }`,
+                      }}
                     />
 
                     <Button
                       variant="default"
                       className="flex items-center gap-2 rounded-none btn-primary py-6 text-lg w-fit px-8"
-                      disabled={!product.rightUsdPrice}
+                      disabled={!product.prices.usd.rightCurrent}
                     >
                       <ShoppingCart strokeWidth={3} size={20} />
-                      {product.rightUsdPrice ? "Add to Cart" : "Not Available"}
+                      {product.prices.usd.rightCurrent ? "Add to Cart" : "Not Available"}
                     </Button>
                   </div>
                 </div>
