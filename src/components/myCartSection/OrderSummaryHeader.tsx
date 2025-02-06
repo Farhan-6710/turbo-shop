@@ -22,7 +22,7 @@ const OrderSummaryHeader: React.FC<OrderSummaryHeaderProps> = ({ isCouponApplied
   }, []);
 
   const parsePrice = (priceString: string): number => {
-    return parseFloat(priceString.replace(/[^0-9.-]+/g, ""));
+    return parseFloat(priceString.replace(/[^0-9.-]+/g, "")); // Convert price string to number
   };
 
   // Calculate subtotal based on the current cart
@@ -36,7 +36,7 @@ const OrderSummaryHeader: React.FC<OrderSummaryHeaderProps> = ({ isCouponApplied
     }, 0);
   };
 
-  const deliveryCharge = currency === "CAD" ? 8.00 : 5.00; // 8.0 for CAD, 5.0 for USD
+  const deliveryCharge = cart.length === 0 ? 0.00 : (currency === "CAD" ? 8.00 : 5.00); // Set delivery charge to 0 if cart is empty
 
   const subTotal = getSubtotal();
   const SubTotal = subTotal + deliveryCharge;

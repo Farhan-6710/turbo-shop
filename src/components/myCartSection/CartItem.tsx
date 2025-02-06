@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { FaTrash } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import { Product } from "@/lib/productTypes";
 import useCartStore from "@/store/useCartStore"; // Import the cart store
 import NotificationPopup from "@/components/extras/NotificationPopup"; // Import the NotificationPopup component
@@ -112,7 +112,7 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, prices, sideLabel }) => {
             className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 mt-5 xs:mt-0"
             onClick={showNotification} // Show the confirmation notification on click
           >
-            <FaTrash />
+            <FaTrashAlt />
           </button>
           {notification.visible && (
             <NotificationPopup

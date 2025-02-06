@@ -2,11 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "../ui/button";
-import { ShoppingCart } from "lucide-react";
 import { Product } from "@/lib/productTypes";
 import useCartStore from "@/store/useCartStore";
-import { FaTrash } from "react-icons/fa6";
 import { TransitionLink } from "@/lib/TransitionLink";
+import { FaTrashAlt } from "react-icons/fa";
 
 interface RightPricingSectionProps {
   prices: {
@@ -77,26 +76,25 @@ const RightPricingSection: React.FC<RightPricingSectionProps> = ({
             {!isAddedToCart ? (
               <Button
                 variant="default"
-                className={`items-center gap-2 rounded-none py-6 text-lg w-fit px-8 ${
-                  isAddedToCart ? "hidden" : "flex btn-primary bg-primary"
+                className={`items-center gap-2 rounded-lg h-11 text-md lg:text-lg 2xl:h-12 2xl:text-xl w-fit px-6 border order border-transparent dark:border-transparent ${
+                  isAddedToCart ? "hidden" : "flex bg-primary"
                 }`}
                 disabled={!prices.rightCurrent}
                 onClick={handleAddToCart}
               >
-                <ShoppingCart strokeWidth={3} size={20} />
                 Add to Cart
               </Button>
             ) : (
               <TransitionLink href="/my-cart">
-                <div
-                  className={`flex items-center gap-2 rounded-none py-2 text-xl w-fit px-6 xs:px-12 bg-whiteOne dark:bg-blackOne border border-gray-300 dark:border-stone-800 shadow-none duration-200 ${
+                <Button
+                  className={`flex items-center gap-2 rounded-lg h-11 text-md lg:text-lg 2xl:h-12 2xl:text-xl w-fit px-6 bg-whiteOne dark:bg-blackOne border border-gray-300 dark:border-stone-800 shadow-none duration-200 ${
                     isAddedToCart
                       ? "flex hover:bg-blackTwo dark:hover:bg-blackTwo hover:text-white text-green-500"
                       : "hidden"
                   }`}
                 >
-                  View Cart
-                </div>
+                  Added To Cart
+                </Button>
               </TransitionLink>
             )}
           </div>
@@ -105,13 +103,10 @@ const RightPricingSection: React.FC<RightPricingSectionProps> = ({
             {isAddedToCart && (
               <Button
                 variant="default"
-                className="flex items-center justify-center w-14 h-12 bg-red-500 border-gray-300 dark:border-stone-800 text-white hover:bg-whiteOne dark:hover:bg-blackOne hover:text-red-500 duration-200 shadow-none"
+                className="flex items-center justify-center w-12 h-11 bg-red-500 border-gray-300 dark:border-stone-800 text-white hover:bg-whiteOne dark:hover:bg-blackOne hover:text-red-500 duration-200 shadow-none"
                 onClick={handleRemoveFromCart}
               >
-                <FaTrash
-                  strokeWidth={3}
-                  size={30}
-                  className="w-full h-full text-4xl"
+                <FaTrashAlt size={20}
                 />
               </Button>
             )}

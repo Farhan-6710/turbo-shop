@@ -57,7 +57,7 @@ const CouponSection: React.FC<CouponSectionProps> = ({
     return itemTotal + deliveryCharge - discount;
   };
 
-  const deliveryCharge = currency === "CAD" ? 8.0 : 5.0;
+  const deliveryCharge = cart.length === 0 ? 0.00 : (currency === "CAD" ? 8.00 : 5.00); // Set delivery charge to 0 if cart is empty
   const subTotal = getSubtotal();
   const total = getTotal(deliveryCharge, isCouponApplied ? 0.1 * subTotal : 0);
 
