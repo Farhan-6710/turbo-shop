@@ -1,20 +1,25 @@
 "use client"; // Ensure this runs in a client component
 
 import React, { useState, useEffect } from "react";
-import { ShoppingCart, Menu } from "lucide-react"; // Removed X, as it's now in MobileMenu
+import { Menu } from "lucide-react"; // Removed X, as it's now in MobileMenu
 import { ModeToggle } from "./ModeToggle";
 import Image from "next/image";
 import MobileMenu from "./MobileMenu"; // Import the MobileMenu component
 import { useTheme } from "next-themes";
 import { TransitionLink } from "@/lib/TransitionLink";
 import Link from "next/link";
+import useCurrencyStore from "@/store/useCurrencyStore"; // Assuming Zustand store is already set up
+import CustomDropdown from "./CustomDropdown";
+import CartButton from "./CartButton";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false); // To track if the component has mounted
-
   const { theme } = useTheme(); // Get the current theme
+
+  const { currency, setCurrency } = useCurrencyStore(); // Zustand currency state
 
   useEffect(() => {
     // Once mounted, set mounted state to true
@@ -33,6 +38,12 @@ const Header: React.FC = () => {
     return null;
   }
 
+  // Custom Dropdown for Currency Selection
+  const handleCurrencyChange = (value: string) => {
+    setCurrency(value); // Update global currency state via Zustand
+    setIsOpen(false); // Close dropdown after selection
+  };
+
   return (
     <>
       {/* Header */}
@@ -50,17 +61,19 @@ const Header: React.FC = () => {
               {/* Conditionally render based on the current theme */}
               {theme === "dark" ? (
                 <Image
-                  src="/logo1-dark.png" // Dark theme logo
+                  src="/logo1-dark.png"
                   alt="Turbo Shop Logo Dark"
                   width={240}
                   height={50}
+                  className="w-full max-w-2xl"
                 />
               ) : (
                 <Image
-                  src="/logo1-light.png" // Light theme logo
+                  src="/logo1-light.png"
                   alt="Turbo Shop Logo Light"
                   width={240}
                   height={50}
+                  className="w-full max-w-2xl"
                 />
               )}
             </div>
@@ -73,29 +86,21 @@ const Header: React.FC = () => {
               UNIVERSAL PRODUCTS
             </TransitionLink>
             <TransitionLink href="/about">ABOUT US</TransitionLink>
-            <TransitionLink href="/contact">CONTACT US</TransitionLink>
+            <TransitionLink href="/contact-us">CONTACT US</TransitionLink>
           </nav>
 
           {/* Right Side (Cart, Currency, Theme, Phone) - Hidden on small screens */}
           <div className="hidden xl:flex items-center space-x-4">
-            <div className="relative hover:text-primary dark:hover:text-primaryhover transition text-blackTwo dark:text-whiteTwo cursor-pointer">
-              <ShoppingCart strokeWidth={2.5} className="h-6 w-6" />
-              <span className="absolute flex justify-center items-center -top-3 -right-3 bg-primary text-white text-md w-6 h-6 font-semibold px-1 rounded-full">
-                2{" "}
-              </span>
-            </div>
-
-            <select className="bg-transparent border-none text-blackTwo dark:text-whiteTwo focus:outline-none cursor-pointer">
-              <option className="dark:bg-blackOne" value="USD">
-                USD
-              </option>
-              <option className="dark:bg-blackOne" value="CAD">
-                CAD
-              </option>
-            </select>
-
+            <TransitionLink href="/my-cart">
+              <CartButton />
+            </TransitionLink>
+            <CustomDropdown
+              handleCurrencyChange={handleCurrencyChange}
+              currency={currency}
+              setIsOpen={setIsOpen}
+              isOpen={isOpen}
+            />
             <ModeToggle />
-
             <span className="pl-4 text-gray-900 dark:text-whiteOne font-medium">
               403-993-6742
             </span>

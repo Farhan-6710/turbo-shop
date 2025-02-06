@@ -1,11 +1,11 @@
 export interface Product {
   id: number;
-  imgPath: string;
-  brand: string;
+  imgPath: string | string[];
+  brand?: string;
   modelName: string;
-  subTitle: string;
-  leftPartNumber: string;
-  rightPartNumber: string;
+  subTitle?: string;
+  leftPartNumber?: string;
+  rightPartNumber?: string;
   prices: {
     usd: {
       leftCurrent: string;
@@ -20,8 +20,8 @@ export interface Product {
       rightOriginal: string;
     };
   };
-  description: string;
-  Category: string;
-  year: string;
+  description?: string;
+  Category?: string;
+  year?: string;
   tag: string;
 }

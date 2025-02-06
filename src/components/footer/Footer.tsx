@@ -26,11 +26,11 @@ const Footer = () => {
     <footer className="dark:bg-blackOne bg-whiteOne dark:text-white text-blackOne">
       <div className="">
         {/* Footer Grid */}
-        <div className="container mx-auto py-10 sm:py-16 pb-6 px-6 sm:px-2 md:px-2 lg:px-2">
+        <div className="container mx-auto py-10 md:py-16 pb-6 sm:pb-12 px-6 sm:px-2 md:px-2 lg:px-2">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Logo & Description */}
             <div>
-              <div className="relative">
+              <div className="relative max-w-[200px]">
                 {" "}
                 {/* Responsive Logo */}
                 {theme === "dark" ? (
@@ -39,6 +39,7 @@ const Footer = () => {
                     alt="Turbo Shop Logo Dark"
                     width={220}
                     height={50}
+                    className="w-full max-w-2xl"
                   />
                 ) : (
                   <Image
@@ -46,6 +47,7 @@ const Footer = () => {
                     alt="Turbo Shop Logo Light"
                     width={220}
                     height={50}
+                    className="w-full max-w-2xl"
                   />
                 )}
               </div>
@@ -70,7 +72,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/universal-product"
+                    href="/universal-products"
                     className="dark:text-white text-blackOne dark:hover:text-orange-500 hover:text-primary transition duration-200 flex items-center gap-2"
                   >
                     <QuickLinksSVG />

@@ -23,7 +23,7 @@ export function ModeToggle() {
   }
 
   return (
-    <Button variant="outline" size="icon" className="dark:border-gray-400/30" onClick={toggleTheme}>
+    <Button variant="outline" size="icon" className="border-gray-300 dark:border-stone-700" onClick={toggleTheme}>
       {theme === "light" ? (
         <Moon className="h-[1.2rem] w-[1.2rem]" />
       ) : (

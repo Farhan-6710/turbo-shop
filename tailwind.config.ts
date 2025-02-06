@@ -3,9 +3,9 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: "class", // Enables dark mode using a class
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/data/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -25,6 +25,9 @@ export default {
 
       boxShadow: {
         "dark": "0 2px 50px rgba(0, 0, 0, 0.7)", // Custom dark shadow
+      },
+      screens: {
+        xs: "475px", // Add the xs breakpoint for very small screens
       },
     },
   },

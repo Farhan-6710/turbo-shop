@@ -1,14 +1,15 @@
-"use client"
+"use client";
 
-import ProductsSection from "@/components/productsListing/ProductsSection";
+import ProductsSection from "@/components/products-listing/ProductsSection";
 import React from "react";
-import { subaruProductsData } from "@/data/subaruProductsData";
+import { subaruProductsData } from "@/data/products-data/subaruProductsData";
 import HeaderTop from "@/components/header/HeaderTop";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-import BreadcrumbSection from "@/components/productsListing/BreadcrumbSection";
+import BreadcrumbSection from "@/components/products-listing/BreadcrumbSection";
 import { SelectVehicleMake } from "@/components/extras/SelectVehicleMake";
 import usePreLoaderAnimation from "@/lib/usePreLoaderAnimation";
+import ScrollToTop from "@/components/extras/ScrollToTop";
 
 const Page = () => {
   usePreLoaderAnimation();
@@ -20,9 +21,13 @@ const Page = () => {
       <SelectVehicleMake />
       <BreadcrumbSection
         title="SHOP SUBARU PRODUCTS"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "subaru-products" }]}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "subaru-products" },
+        ]}
       />
       <ProductsSection productsData={subaruProductsData} />
+      <ScrollToTop />
       <Footer />
     </>
   );

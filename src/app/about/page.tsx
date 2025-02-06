@@ -1,6 +1,7 @@
 "use client"
 
 import AboutSection from "@/components/about/AboutSection";
+import ScrollToTop from "@/components/extras/ScrollToTop";
 import { SelectVehicleMake } from "@/components/extras/SelectVehicleMake";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
@@ -17,6 +18,7 @@ const Page: React.FC = () => {
       <Header />
       <SelectVehicleMake />
       <AboutSection />
+      <ScrollToTop />
       <Footer />
     </div>
   );

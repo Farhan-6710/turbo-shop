@@ -28,10 +28,10 @@ const AboutSection: React.FC = () => {
           <div className="w-3/4">
             <Image
               src="/hero-img.png"
-              alt="About Us Image"
-              width={600}
-              height={400}
-              objectFit="contain"
+              alt="Turbo Image"
+              width={800}
+              height={500}
+              className="w-full max-w-2xl"
             />
           </div>
         </div>

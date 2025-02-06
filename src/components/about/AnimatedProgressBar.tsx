@@ -13,7 +13,7 @@ const AnimatedProgressBar: React.FC<AnimatedProgressBarProps> = ({ label, percen
   useEffect(() => {
     setTimeout(() => {
       setWidth(`${percentage}%`);
-    }, 100); // Delay to trigger animation after mount
+    }, 1000); // Delay to trigger animation after mount
   }, [percentage]);
 
   return (

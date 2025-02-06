@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { TransitionLink } from "@/lib/TransitionLink";
@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation"; // Import usePathname
 
 export function SelectVehicleMake() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);  // Track mount state
   const pathname = usePathname(); // Get the current pathname from the hook
 
   // List of vehicle makes
@@ -33,20 +34,27 @@ export function SelectVehicleMake() {
     { name: "VOLVO", path: "/volvo-products" },
   ];
 
+  // Use effect to ensure the component is mounted
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Dynamically set the top position based on the current path
-  const buttonTopPosition = pathname === "/" ? "top-[170px]" : "top-[273px]";
+  const buttonTopPosition = isMounted ? (pathname === "/" ? "top-[170px]" : "top-[273px]") : "top-[170px]";  // Default to a valid position before mount
 
   return (
     <>
-      {/* Button to Open Modal */}
-      <button
-        className={`fixed right-0 ${buttonTopPosition} md:top-[200px] z-20 btn_hotline`}
-        onClick={() => setIsOpen(true)}
-      >
-        <div className="px-5 py-3 bg-primary text-whiteOne uppercase font-semibold">
-          Select Vehicle Make
-        </div>
-      </button>
+      {/* Conditionally render the button to avoid scroll issues */}
+      {!isOpen && (
+        <button
+          className={`fixed right-0 ${buttonTopPosition} md:top-[200px] z-20 btn_hotline`}
+          onClick={() => setIsOpen(true)}
+        >
+          <div className="px-5 py-3 bg-primary text-whiteOne uppercase font-semibold">
+            Select Vehicle Make
+          </div>
+        </button>
+      )}
 
       {/* AnimatePresence ensures proper exit animations */}
       <AnimatePresence>
@@ -79,7 +87,6 @@ export function SelectVehicleMake() {
                   {vehicleMakes.map((vehicle, index) => (
                     <TransitionLink href={vehicle.path} key={index}>
                       <div
-                        key={index}
                         className="p-2 pl-4 hover:bg-gray-100 dark:hover:bg-blackOne cursor-pointer text-blackTwo dark:text-gray-200"
                         onClick={() => {
                           setIsOpen(false); // Close modal after selection
