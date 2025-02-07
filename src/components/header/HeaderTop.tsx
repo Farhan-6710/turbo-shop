@@ -25,7 +25,7 @@ const HeaderTop: React.FC = () => {
 
   return (
     <header className="bg-primary py-3 font-chakra">
-      <div className="container mx-auto flex items-center justify-center gap-6 sm:gap-12 px-6">
+      <div className="container mx-auto flex items-center justify-center gap-6 sm:gap-12 px-0">
         {/* Get a Quote Section */}
         <div className="flex items-center gap-2">
           <IoChatbubbleSharp className="text-white text-xl" />

@@ -3,7 +3,7 @@ import React from "react";
 const FormComponent = () => {
   return (
     <>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4 px-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex flex-col sm:w-1/2">
             <label htmlFor="fullName" className="mb-1 text-xl font-semibold">

@@ -8,10 +8,10 @@ import PopularProductsSection from "@/components/popular-products/PopularProduct
 import ContactUsSection from "@/components/contact-us/ContactUsSection";
 import { SelectVehicleMake } from "@/components/extras/SelectVehicleMake";
 import { useEffect } from "react";
-import ScrollToTop from "@/components/extras/ScrollToTop";
+import ScrollToTopp from "@/components/extras/ScrollToTop";
+import ShippingFeeToast from "@/components/extras/ShippingFeeToast";
 
 const Page: React.FC = () => {
-
   
   useEffect(() => {
     // Save the current scroll position before starting the animation
@@ -38,10 +38,11 @@ const Page: React.FC = () => {
       <HeaderTop />
       <Header />
       <SelectVehicleMake />
+      <ShippingFeeToast heading="SHIPPING CHARGES FOR REPAIR" text="ADDITIONAL $200 FOR SHIPPING FOR PRODUCT REPAIRS." />
       <HeroSection />
       <PopularProductsSection />
       <ContactUsSection />
-      <ScrollToTop />
+      <ScrollToTopp />
       <Footer />
     </div>
   );

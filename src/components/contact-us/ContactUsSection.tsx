@@ -20,16 +20,18 @@ const ContactUsSection = () => {
         </div>
 
         {/* Right Section */}
-        <div className="w-full lg:w-8/12 p-6 py-0 rounded-lg">
-          <h2 className="text-4xl font-bold mb-4">
+        <div className="w-full lg:w-8/12 py-0 rounded-lg">
+          <h2 className="text-4xl font-bold mb-4 p-6 py-0">
             CONTACT US FOR TURBO SOLUTIONS
           </h2>
-          <p className="mb-6 text-lg">
+          <p className="mb-6 text-lg p-6 py-0">
             Need assistance with our products, placing an order, or
             understanding specifications? Fill out the form below, and our team
             will respond promptly.
           </p>
+          <div className="px-2">
           <FormComponent />
+          </div>
         </div>
       </div>
     </section>

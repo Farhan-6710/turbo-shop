@@ -40,7 +40,7 @@ export function SelectVehicleMake() {
   }, []);
 
   // Dynamically set the top position based on the current path
-  const buttonTopPosition = isMounted ? (pathname === "/" ? "top-[170px]" : "top-[273px]") : "top-[170px]";  // Default to a valid position before mount
+  const buttonTopPosition = isMounted ? (pathname === "/" ? "top-[155px]" : "top-[265px]") : "top-[155px]";  // Default to a valid position before mount
 
   return (
     <>
@@ -65,7 +65,7 @@ export function SelectVehicleMake() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
               className="fixed z-20 inset-0 bg-black/80 cursor-pointer dark:bg-black/85"
               onClick={() => setIsOpen(false)} // Close on overlay click
             ></motion.div>

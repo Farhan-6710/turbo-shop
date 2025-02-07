@@ -10,6 +10,7 @@ import BreadcrumbSection from "@/components/products-listing/BreadcrumbSection";
 import { SelectVehicleMake } from "@/components/extras/SelectVehicleMake";
 import usePreLoaderAnimation from "@/lib/usePreLoaderAnimation";
 import ScrollToTop from "@/components/extras/ScrollToTop";
+import ShippingFeeToast from "@/components/extras/ShippingFeeToast";
 
 const Page = () => {
   usePreLoaderAnimation();
@@ -19,6 +20,7 @@ const Page = () => {
       <HeaderTop />
       <Header />
       <SelectVehicleMake />
+      <ShippingFeeToast heading="SHIPPING CHARGES FOR REPAIR" text="ADDITIONAL $200 FOR SHIPPING FOR PRODUCT REPAIRS." />
       <BreadcrumbSection
         title="SHOP GMC PRODUCTS"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "gmc-products" }]}

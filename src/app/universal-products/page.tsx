@@ -7,6 +7,7 @@ import { SelectVehicleMake } from "@/components/extras/SelectVehicleMake";
 import ScrollToTop from "@/components/extras/ScrollToTop";
 import UniversalProducts from "@/components/universal-products/UniversalProducts";
 import usePreLoaderAnimation from "@/lib/usePreLoaderAnimation";
+import ShippingFeeToast from "@/components/extras/ShippingFeeToast";
 
 const Page: React.FC = () => {
 
@@ -17,6 +18,7 @@ const Page: React.FC = () => {
       <HeaderTop />
       <Header />
       <SelectVehicleMake />
+      <ShippingFeeToast heading="SHIPPING CHARGES FOR REPAIR" text="ADDITIONAL $200 FOR SHIPPING FOR PRODUCT REPAIRS." />
       <UniversalProducts />
       <ScrollToTop />
       <Footer />
