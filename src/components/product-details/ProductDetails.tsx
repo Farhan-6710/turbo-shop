@@ -15,7 +15,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, images }) => {
 
   return (
     <div className="bg-white dark:bg-blackOne text-blackOne dark:text-white border-b border-gray-200 dark:border-stone-800">
-      <div className="container mx-auto py-10 sm:py-16 xl:py-20 flex flex-col xl:flex-row gap-8 items-center justify-center">
+      <div className="container mx-auto py-10 2xl:py-20 flex flex-col xl:flex-row gap-8 items-center justify-center">
         
         {/* Carousel Section */}
           <SpecialCarousel images={images} />
@@ -26,15 +26,15 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, images }) => {
             <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
               {product.brand} {product.modelName}
             </h1>
-            <h2 className="text-xl sm:text-xl text-gray-600 dark:text-gray-300">
+            <h2 className="text-xl sm:text-xl text-gray-700 dark:text-gray-300">
               {product.subTitle}
             </h2>
 
-            <p className="text-base sm:text-md text-gray-700 dark:text-gray-400">
+            <p className="text-base sm:text-md text-gray-700 dark:text-gray-300">
               {product.description}
             </p>
 
-            <div className="text-sm sm:text-base text-gray-500 dark:text-gray-500">
+            <div className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
               <p>Category: <span className="font-semibold">{product.Category}</span></p>
               <p>Year: <span className="font-semibold">{product.year}</span></p>
             </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { Button } from "../ui/button";
@@ -62,12 +62,9 @@ const LeftPricingSection: React.FC<LeftPricingSectionProps> = ({
           </span>
         </div>
 
-        <p
-          className="text-xs sm:text-sm mb-4 text-gray-600 dark:text-gray-400"
-          dangerouslySetInnerHTML={{
-            __html: `OEM Left Part Number : ${product.leftPartNumber || "N/A"}`,
-          }}
-        />
+        <p className="text-xs sm:text-sm mb-4 text-gray-600 dark:text-gray-400">
+          OEM Left Part Number : {product.leftPartNumber || "N/A"}
+        </p>
 
         <div className="flex flex-wrap gap-2 items-center">
           <div>
@@ -75,7 +72,7 @@ const LeftPricingSection: React.FC<LeftPricingSectionProps> = ({
               <Button
                 variant="default"
                 className={`items-center gap-2 rounded-lg h-11 text-md lg:text-lg 2xl:h-12 2xl:text-xl w-fit px-6 ${
-                  isAddedToCart ? "hidden" : "flex bg-primary"
+                  isAddedToCart ? "hidden" : "flex bg-primary text-white"
                 }`}
                 disabled={!prices.leftCurrent}
                 onClick={handleAddToCart} // Only add to cart when clicked
@@ -105,9 +102,7 @@ const LeftPricingSection: React.FC<LeftPricingSectionProps> = ({
                 className="flex items-center justify-center w-12 h-11 bg-red-500 border-gray-300 dark:border-stone-800 text-white hover:bg-whiteOne dark:hover:bg-blackOne hover:text-red-500 duration-200 shadow-none"
                 onClick={handleRemoveFromCart} // Handle removing the product from the cart
               >
-                <FaTrashAlt
-                size={20}
-                />
+                <FaTrashAlt size={20} />
               </Button>
             )}
           </div>

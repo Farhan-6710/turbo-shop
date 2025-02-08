@@ -15,7 +15,7 @@ const SpecialCarousel: React.FC<SpecialCarouselProps> = ({ images }) => {
   return (
     <Carousel
       orientation="vertical"
-      className="flex justify-center items-center gap-2 w-full xl:w-5/12 bg-whiteOne dark:bg-blackTwo py-6 md:py-10 sm:px-4"
+      className="flex justify-center items-center gap-2 w-full xl:w-5/12 bg-whiteTwo dark:bg-blackTwo py-6 md:py-10 sm:px-4 border border-gray-200 dark:border-stone-800 rounded-md"
     >
       <CarouselThumbsContainer className="h-56 sm:h-72 basis-1/4">
         {images.map((image, index) => (

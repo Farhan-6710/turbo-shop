@@ -118,6 +118,10 @@ const Header: React.FC = () => {
 
       {/* MobileMenu Component */}
       <MobileMenu
+        handleCurrencyChange={handleCurrencyChange}
+        currency={currency}
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />

@@ -17,7 +17,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   return (
     <>
       {/* Custom Dropdown */}
-      <div className="relative flex justify-center items-center border border-gray-300 dark:border-stone-700 rounded-lg">
+      <div className="relative flex justify-center items-center border border-gray-300 dark:border-stone-700 rounded-lg w-fit">
         <div
           className="bg-transparent text-blackTwo dark:text-whiteTwo focus:outline-none focus:ring-0 cursor-pointer p-1 pl-3 pr-7 rounded-lg text-md appearance-none w-[72px]"
           onMouseDown={(e) => e.preventDefault()} // Prevent default dropdown opening on click

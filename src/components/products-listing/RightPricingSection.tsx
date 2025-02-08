@@ -64,12 +64,9 @@ const RightPricingSection: React.FC<RightPricingSectionProps> = ({
           </span>
         </div>
 
-        <p
-          className="text-xs sm:text-sm mb-4 text-gray-600 dark:text-gray-400"
-          dangerouslySetInnerHTML={{
-            __html: `OEM Right Part Number : ${product.rightPartNumber || "N/A"}`,
-          }}
-        />
+        <p className="text-xs sm:text-sm mb-4 text-gray-600 dark:text-gray-400">
+          OEM Right Part Number : {product.rightPartNumber || "N/A"}
+        </p>
 
         <div className="flex flex-wrap gap-2 items-center">
           <div>
@@ -77,7 +74,7 @@ const RightPricingSection: React.FC<RightPricingSectionProps> = ({
               <Button
                 variant="default"
                 className={`items-center gap-2 rounded-lg h-11 text-md lg:text-lg 2xl:h-12 2xl:text-xl w-fit px-6 border order border-transparent dark:border-transparent ${
-                  isAddedToCart ? "hidden" : "flex bg-primary"
+                  isAddedToCart ? "hidden" : "flex bg-primary text-white"
                 }`}
                 disabled={!prices.rightCurrent}
                 onClick={handleAddToCart}
@@ -106,8 +103,7 @@ const RightPricingSection: React.FC<RightPricingSectionProps> = ({
                 className="flex items-center justify-center w-12 h-11 bg-red-500 border-gray-300 dark:border-stone-800 text-white hover:bg-whiteOne dark:hover:bg-blackOne hover:text-red-500 duration-200 shadow-none"
                 onClick={handleRemoveFromCart}
               >
-                <FaTrashAlt size={20}
-                />
+                <FaTrashAlt size={20} />
               </Button>
             )}
           </div>

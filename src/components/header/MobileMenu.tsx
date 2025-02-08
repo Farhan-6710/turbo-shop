@@ -7,15 +7,24 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import CartButton from "./CartButton";
 import { TransitionLink } from "@/lib/TransitionLink";
+import CustomDropdown from "./CustomDropdown";
 
 interface MobileMenuProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  handleCurrencyChange: (value: string) => void;
+  currency: string;
+  setIsOpen: (isOpen: boolean) => void;
+  isOpen: boolean;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   isSidebarOpen,
   setIsSidebarOpen,
+  handleCurrencyChange,
+  currency,
+  setIsOpen,
+  isOpen
 }) => {
   const [mounted, setMounted] = useState(false); // To track if the component has mounted
 
@@ -104,7 +113,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         <div className="p-6 flex flex-col gap-4 border-t border-gray-200 dark:border-stone-800">
           {/* First Row: Icon and My Cart */}
           <div className="flex justify-between items-center font-medium text-slate-900 dark:text-whiteOne">
-            {/* Cart Button */}
+            
             <TransitionLink href="/my-cart">
               <div className="flex items-center gap-2">
                 <CartButton />
@@ -114,6 +123,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 
             <ModeToggle />
           </div>
+          {/* Cart Button */}
+          <CustomDropdown
+              handleCurrencyChange={handleCurrencyChange}
+              currency={currency}
+              setIsOpen={setIsOpen}
+              isOpen={isOpen}
+            />
 
           {/* Second Row: ModeToggle and Phone */}
           <div className="flex items-center gap-4">
