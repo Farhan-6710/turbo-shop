@@ -35,7 +35,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, images }) => {
             </p>
 
             <div className="text-sm sm:text-base text-gray-700 dark:text-gray-300">
-              <p>Category: <span className="font-semibold">{product.Category}</span></p>
+              <p>Category: <span className="font-semibold">{product.category}</span></p>
               <p>Year: <span className="font-semibold">{product.year}</span></p>
             </div>
 
