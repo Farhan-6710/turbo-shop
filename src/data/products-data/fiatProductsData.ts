@@ -29,7 +29,7 @@ export const fiatProductsData = [
       },
     },
     description: commonDescription,
-    Category: "FIAT",
+    category: "FIAT",
     year: "2012-2020",
     tag: "popular",
   },

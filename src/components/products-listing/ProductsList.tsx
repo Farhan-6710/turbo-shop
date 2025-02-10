@@ -16,8 +16,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ productsData }) => {
   const { currency } = useCurrencyStore();
 
   return (
-    <div className="bg-whiteTwo dark:bg-blackTwo">
-      <div className="container mx-auto px-4 py-6 sm:py-12">
+      <div className="container mx-auto px-4">
         {/* Grid layout with responsive breakpoints */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {productsData.map((product) => {
@@ -97,7 +96,6 @@ const ProductsList: React.FC<ProductsListProps> = ({ productsData }) => {
           })}
         </div>
       </div>
-    </div>
   );
 };
 

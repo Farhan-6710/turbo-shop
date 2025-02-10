@@ -36,7 +36,7 @@ const PopularProductsSection = () => {
   }
 
   return (
-    <section className="bg-whiteTwo dark:bg-blackTwo mx-auto py-10 sm:py-16 pt-12 px-4">
+    <section className="bg-whiteTwo dark:bg-blackTwo mx-auto py-10 sm:py-16 pt-12 px-4 border-t border-gray-200 dark:border-stone-800">
       <div className="container mx-auto flex justify-between items-center px-2">
         <h2 className="text-blackTwo dark:text-white text-4xl uppercase font-bold">
           Popular Products

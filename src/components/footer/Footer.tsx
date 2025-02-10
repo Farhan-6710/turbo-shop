@@ -23,7 +23,7 @@ const Footer = () => {
     return null;
   }
   return (
-    <footer className="dark:bg-blackOne bg-whiteOne dark:text-white text-blackOne">
+    <footer className="dark:bg-blackOne bg-whiteOne dark:text-white text-blackOne border-t border-gray-200 dark:border-stone-800">
       <div className="">
         {/* Footer Grid */}
         <div className="container mx-auto py-10 md:py-16 pb-6 sm:pb-12 px-6 sm:px-2 md:px-2 lg:px-2">
@@ -153,7 +153,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="dark:bg-blackTwo bg-whiteTwo md:mt-8 py-6 px-14 text-center dark:text-white text-blackOne text-sm md:text-base">
+        <div className="dark:bg-blackTwo bg-whiteTwo py-6 px-14 text-center dark:text-white text-blackOne text-sm md:text-base border-t border-gray-200 dark:border-stone-800">
           <p className="font-sans font-normal">
             <span className="font-bold dark:text-white text-blackOne">
               Turboshop.ca

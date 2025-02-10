@@ -21,7 +21,7 @@ export interface Product {
     };
   };
   description?: string;
-  Category?: string;
+  category?: string;
   year?: string;
   tag: string;
 }

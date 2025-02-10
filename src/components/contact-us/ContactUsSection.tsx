@@ -1,9 +1,9 @@
 import React from "react";
-import FormComponent from "../FormComponent";
+import FormComponent from "./FormComponent";
 
 const ContactUsSection = () => {
   return (
-    <section className="bg-whiteTwo dark:bg-blackTwo text-blackTwo dark:text-whiteTwo py-10 sm:py-16 border-t border-gray-300 dark:border-stone-800">
+    <section className="bg-whiteTwo dark:bg-blackTwo text-blackTwo dark:text-whiteTwo py-10 sm:py-16 border-t border-gray-200 dark:border-stone-800">
       <div className="container mx-auto flex flex-col lg:flex-row gap-4">
         {/* Left Section */}
         <div className="w-full lg:w-4/12 flex flex-col bg-whiteOne dark:bg-blackOne p-12 h-fit mb-4 lg:mb-0">
@@ -30,7 +30,7 @@ const ContactUsSection = () => {
             will respond promptly.
           </p>
           <div className="px-2">
-          <FormComponent />
+            <FormComponent />
           </div>
         </div>
       </div>

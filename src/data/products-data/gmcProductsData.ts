@@ -28,7 +28,7 @@ export const gmcProductsData = [
       },
     },
     description: commonDescription,
-    Category: "GMC Sierra",
+    category: "GMC Sierra",
     year: "2017-Current ",
     tag: "popular",
   },

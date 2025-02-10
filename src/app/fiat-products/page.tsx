@@ -1,6 +1,6 @@
 "use client";
 
-import ProductsSection from "@/components/products-listing/ProductsSection";
+import ProductsSection from "@/components/products-listing/ProductsListSection";
 import React from "react";
 import { fiatProductsData } from "@/data/products-data/fiatProductsData";
 import HeaderTop from "@/components/header/HeaderTop";
@@ -20,7 +20,10 @@ const Page = () => {
       <HeaderTop />
       <Header />
       <SelectVehicleMake />
-      <ShippingFeeToast heading="SHIPPING CHARGES FOR REPAIR" text="ADDITIONAL $200 FOR SHIPPING FOR PRODUCT REPAIRS." />
+      <ShippingFeeToast
+        heading="SHIPPING CHARGES FOR REPAIR"
+        text="ADDITIONAL $200 FOR SHIPPING FOR PRODUCT REPAIRS."
+      />
       <BreadcrumbSection
         title="SHOP FIAT PRODUCTS"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "fiat-products" }]}
