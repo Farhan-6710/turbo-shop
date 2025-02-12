@@ -158,7 +158,7 @@ export const fordProductsData = [
     },
     description: commonDescription,
     category: "F150",
-    year: " 2021-2023",
+    year: "2021-2023",
     tag: "popular",
   },
   {

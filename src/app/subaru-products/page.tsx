@@ -1,6 +1,6 @@
 "use client";
 
-import ProductsSection from "@/components/products-listing/ProductsListSection";
+import ProductsSection from "@/components/products-listing/ProductsSection";
 import React from "react";
 import { subaruProductsData } from "@/data/products-data/subaruProductsData";
 import HeaderTop from "@/components/header/HeaderTop";

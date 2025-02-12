@@ -1,11 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "../ui/button";
 import { Product } from "@/lib/productTypes";
 import useCartStore from "@/store/useCartStore"; // Import your store
-import { TransitionLink } from "@/lib/TransitionLink";
-import { FaTrashAlt } from "react-icons/fa";
+import CartButtonGroup from "./CartButtonGroup";
 
 interface LeftPricingSectionProps {
   prices: {
@@ -19,27 +17,29 @@ const LeftPricingSection: React.FC<LeftPricingSectionProps> = ({
   prices,
   product,
 }) => {
-  const { addToCart, removeFromCart, isInCart } = useCartStore(); // Access the store functions
+  const { addToCart, removeFromCart } = useCartStore(); // Access the store functions
   const [isMounted, setIsMounted] = useState(false); // State to control rendering after mount
-  const [isAddedToCart, setIsAddedToCart] = useState(false); // Local state to track if item is added to the cart
+  const [isLoading, setIsLoading] = useState(false); // State to track loading state
+  const side = "left"; // Define the side of the product
 
   useEffect(() => {
     setIsMounted(true); // Set isMounted to true after component mounts
   }, []);
 
-  useEffect(() => {
-    // Check if the product is in the cart and update local state accordingly
-    setIsAddedToCart(isInCart(product, "left")); // Use both id and modelName in the check
-  }, [product.id, product.modelName, isInCart]); // Re-run this effect whenever the product changes
-
   const handleAddToCart = () => {
-    addToCart(product, "left"); // Add product to cart in the global store
-    setIsAddedToCart(true); // Update local state to show "Added to Cart"
+    setIsLoading(true); // Start loading
+    setTimeout(() => {
+      addToCart(product, side); // Add product to cart in the global store
+      setIsLoading(false); // Stop loading
+    }, 500); // Simulate a 1-second delay
   };
 
   const handleRemoveFromCart = () => {
-    removeFromCart(product, "left"); // Remove product from cart
-    setIsAddedToCart(false); // Update local state to reflect the removal
+    setIsLoading(true); // Start loading
+    setTimeout(() => {
+      removeFromCart(product, side); // Remove product from cart
+      setIsLoading(false); // Stop loading
+    }, 500); // Simulate a 1-second delay
   };
 
   // Don't render content until after the component has mounted
@@ -66,47 +66,15 @@ const LeftPricingSection: React.FC<LeftPricingSectionProps> = ({
           OEM Left Part Number : {product.leftPartNumber || "N/A"}
         </p>
 
-        <div className="flex flex-wrap gap-2 items-center">
-          <div>
-            {!isAddedToCart ? (
-              <Button
-                variant="default"
-                className={`items-center gap-2 rounded-lg h-11 text-md lg:text-lg 2xl:h-12 2xl:text-xl w-fit px-6 ${
-                  isAddedToCart ? "hidden" : "flex bg-primary text-white"
-                }`}
-                disabled={!prices.leftCurrent}
-                onClick={handleAddToCart} // Only add to cart when clicked
-              >
-                Add to Cart
-              </Button>
-            ) : (
-              <TransitionLink href="/my-cart">
-                <Button
-                  className={`flex items-center gap-2 rounded-lg h-11 text-md lg:text-lg 2xl:h-12 2xl:text-xl w-fit px-6 bg-whiteOne dark:bg-blackOne border border-gray-300 dark:border-stone-800 shadow-none duration-200 ${
-                    isAddedToCart
-                      ? "flex hover:bg-blackTwo dark:hover:bg-blackTwo hover:text-white text-green-500"
-                      : "hidden"
-                  }`}
-                >
-                  Added To Cart
-                </Button>
-              </TransitionLink>
-            )}
-          </div>
-
-          <div>
-            {/* Conditionally render the "Remove from Cart" button if the product is in the cart */}
-            {isAddedToCart && (
-              <Button
-                variant="default"
-                className="flex items-center justify-center w-12 h-11 bg-red-500 border-gray-300 dark:border-stone-800 text-white hover:bg-whiteOne dark:hover:bg-blackOne hover:text-red-500 duration-200 shadow-none"
-                onClick={handleRemoveFromCart} // Handle removing the product from the cart
-              >
-                <FaTrashAlt size={20} />
-              </Button>
-            )}
-          </div>
-        </div>
+        {/* Use CartButtonGroup here */}
+        <CartButtonGroup
+          isLoading={isLoading}
+          onAddToCart={handleAddToCart}
+          onRemoveFromCart={handleRemoveFromCart}
+          price={prices.leftCurrent}
+          side={side}
+          product={product}
+        />
       </div>
     </div>
   );

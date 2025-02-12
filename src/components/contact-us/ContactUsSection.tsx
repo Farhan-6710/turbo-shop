@@ -1,7 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import FormComponent from "./FormComponent";
 
 const ContactUsSection = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  if (!isLoaded) {
+    return null; // Render nothing until the component is loaded
+  }
+
   return (
     <section className="bg-whiteTwo dark:bg-blackTwo text-blackTwo dark:text-whiteTwo py-10 sm:py-16 border-t border-gray-200 dark:border-stone-800">
       <div className="container mx-auto flex flex-col lg:flex-row gap-4">

@@ -3,18 +3,18 @@ import { Product } from "@/lib/productTypes";
 
 // Define the CartState type
 interface CartState {
-  cart: { product: Product; side: "left" | "right"; quantity: number }[]; // Add quantity field
-  addToCart: (product: Product, side: "left" | "right") => void;
-  removeFromCart: (product: Product, side: "left" | "right") => void;
-  isInCart: (product: Product, side: "left" | "right") => boolean;
-  increaseQuantity: (product: Product, side: "left" | "right") => void;
-  decreaseQuantity: (product: Product, side: "left" | "right") => void;
-  getProductQuantity: (product: Product, side: "left" | "right") => number;
+  cart: { product: Product; part: "left" | "right"; quantity: number }[]; // Add quantity field
+  addToCart: (product: Product, part: "left" | "right") => void;
+  removeFromCart: (product: Product, part: "left" | "right") => void;
+  isInCart: (product: Product, part: "left" | "right") => boolean;
+  increaseQuantity: (product: Product, part: "left" | "right") => void;
+  decreaseQuantity: (product: Product, part: "left" | "right") => void;
+  getProductQuantity: (product: Product, part: "left" | "right") => number;
 }
 
 // Helper function to persist the cart in localStorage
 const persistCartInLocalStorage = (
-  cart: { product: Product; side: "left" | "right"; quantity: number }[]
+  cart: { product: Product; part: "left" | "right"; quantity: number }[]
 ) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
@@ -29,53 +29,53 @@ const useCartStore = create<CartState>((set, get) => {
 
   return {
     cart: initialCart,
-    addToCart: (product: Product, side: "left" | "right") =>
+    addToCart: (product: Product, part: "left" | "right") =>
       set((state) => {
         const updatedCart = [
           ...state.cart,
-          { product, side, quantity: 1 },
+          { product, part, quantity: 1 },
         ];
         persistCartInLocalStorage(updatedCart); // Persist the updated cart
         return { cart: updatedCart };
       }),
-    removeFromCart: (product: Product, side: "left" | "right") =>
+    removeFromCart: (product: Product, part: "left" | "right") =>
       set((state) => {
         const updatedCart = state.cart.filter(
           (item) =>
             !(item.product.id === product.id &&
               item.product.modelName === product.modelName &&
-              item.side === side)
+              item.part === part)
         );
         persistCartInLocalStorage(updatedCart); // Persist the updated cart
         return { cart: updatedCart };
       }),
-    isInCart: (product: Product, side: "left" | "right") => {
+    isInCart: (product: Product, part: "left" | "right") => {
       const state = get(); // Get the current state
       return state.cart.some(
         (item) =>
           item.product.id === product.id &&
           item.product.modelName === product.modelName &&
-          item.side === side
+          item.part === part
       );
     },
-    increaseQuantity: (product: Product, side: "left" | "right") =>
+    increaseQuantity: (product: Product, part: "left" | "right") =>
       set((state) => {
         const updatedCart = state.cart.map((item) =>
           item.product.id === product.id &&
           item.product.modelName === product.modelName &&
-          item.side === side
+          item.part === part
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
         persistCartInLocalStorage(updatedCart); // Persist the updated cart
         return { cart: updatedCart };
       }),
-    decreaseQuantity: (product: Product, side: "left" | "right") =>
+    decreaseQuantity: (product: Product, part: "left" | "right") =>
       set((state) => {
         const updatedCart = state.cart.map((item) =>
           item.product.id === product.id &&
           item.product.modelName === product.modelName &&
-          item.side === side &&
+          item.part === part &&
           item.quantity > 1
             ? { ...item, quantity: item.quantity - 1 }
             : item
@@ -83,13 +83,13 @@ const useCartStore = create<CartState>((set, get) => {
         persistCartInLocalStorage(updatedCart); // Persist the updated cart
         return { cart: updatedCart };
       }),
-    getProductQuantity: (product: Product, side: "left" | "right") => {
+    getProductQuantity: (product: Product, part: "left" | "right") => {
       const state = get();
       const item = state.cart.find(
         (item) =>
           item.product.id === product.id &&
           item.product.modelName === product.modelName &&
-          item.side === side
+          item.part === part
       );
       console.log("item", item);
       return item ? item.quantity : 0;

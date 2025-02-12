@@ -29,9 +29,9 @@ const OrderSummaryHeader: React.FC<OrderSummaryHeaderProps> = ({ isCouponApplied
   const getSubtotal = (): number => {
     return cart.reduce((total: number, item) => {
       const priceObject = item.product.prices[currency.toLowerCase() as "usd" | "cad"];
-      const priceString = item.side === "left" ? priceObject.leftCurrent : priceObject.rightCurrent;
+      const priceString = item.part === "left" ? priceObject.leftCurrent : priceObject.rightCurrent;
       const price = parsePrice(priceString);
-      const quantity = getProductQuantity(item.product, item.side); // Get the quantity of the item
+      const quantity = getProductQuantity(item.product, item.part); // Get the quantity of the item
       return total + price * quantity; // Multiply price by quantity
     }, 0);
   };

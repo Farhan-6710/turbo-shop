@@ -115,13 +115,15 @@ const Footer = () => {
                   <FaXTwitter className="dark:text-white text-whiteOne text-2xl" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.facebook.com/Turboshoptf"
+                  target="_blank"
                   className="dark:bg-primary bg-primaryhover p-2 rounded-lg dark:hover:bg-primaryhover hover:bg-primary transition duration-200"
                 >
                   <Facebook className="dark:text-white text-whiteOne text-lg" />
                 </Link>
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/turboshoptf"
+                  target="_blank"
                   className="dark:bg-primary bg-primaryhover p-2 rounded-lg dark:hover:bg-primaryhover hover:bg-primary transition duration-200"
                 >
                   <Instagram className="dark:text-white text-whiteOne text-lg" />
@@ -138,16 +140,18 @@ const Footer = () => {
             {/* Contact Info */}
             <div>
               <h3 className="text-2xl font-semibold mb-6">CONTACT US</h3>
+              <Link href="tel:403-993-6742">
               <p className="dark:text-white text-blackOne md:text-base">
                 <span className="font-semibold">
                   CALL US : <br />{" "}
                 </span>{" "}
                 403-993-6742
-              </p>
+              </p></Link>
+              <Link href="mailto:turboshopcanada1@gmail.com">
               <p className="dark:text-white text-blackOne mt-2 md:text-base">
                 <span className="font-semibold">EMAIL US : <br /> </span>{" "}
                 turboshopcanada1@gmail.com
-              </p>
+              </p></Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import ProductsSection from "@/components/products-listing/ProductsListSection";
+import ProductsSection from "@/components/products-listing/ProductsSection";
 import React from "react";
 import { audiProductsData } from "@/data/products-data/audiProductsData";
 import HeaderTop from "@/components/header/HeaderTop";

@@ -45,9 +45,9 @@ const CouponSection: React.FC<CouponSectionProps> = ({
   const getSubtotal = (): number => {
     return cart.reduce((total: number, item) => {
       const priceObject = item.product.prices[currency.toLowerCase() as "usd" | "cad"];
-      const priceString = item.side === "left" ? priceObject.leftCurrent : priceObject.rightCurrent;
+      const priceString = item.part === "left" ? priceObject.leftCurrent : priceObject.rightCurrent;
       const price = parsePrice(priceString);
-      const quantity = getProductQuantity(item.product, item.side); // Get the quantity of the item
+      const quantity = getProductQuantity(item.product, item.part); // Get the quantity of the item
       return total + price * quantity;
     }, 0);
   };
@@ -81,7 +81,7 @@ const CouponSection: React.FC<CouponSectionProps> = ({
       <button
         onClick={handleCouponApply}
         disabled={isCouponApplied}
-        className={`w-full py-3 transition duration-300 btn-primary ${isCouponApplied ? "bg-blackTwo text-whiteTwo border border-gray-200 dark:border-stone-800" : "bg-primary text-whiteTwo"} font-bold`}
+        className={`w-full py-3 transition duration-300 btn-primary ${isCouponApplied ? "bg-whiteTwo dark:bg-blackTwo text-blackTwo dark:text-whiteTwo border border-gray-200 dark:border-stone-800" : "bg-primary text-whiteTwo"} font-bold`}
       >
         {isCouponApplied ? "Coupon Applied" : "Apply Coupon"}
       </button>

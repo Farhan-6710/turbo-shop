@@ -49,7 +49,7 @@ const CartItemList: React.FC = () => {
 
           // Determine the side (left or right) for the current item
           const sideLabel =
-            cartItem.side === "left"
+            cartItem.part === "left"
               ? "OEM Left Part Number : "
               : "OEM Right Part Number : ";
 

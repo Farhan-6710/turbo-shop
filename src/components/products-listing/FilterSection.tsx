@@ -1,75 +1,74 @@
-import { Product } from "@/lib/productTypes";
-import React, { useState, useMemo } from "react";
-import DropdownArrowSVG from "@/components/header/DropdownArrowSVG"; // Assuming this is imported from your original code
+import { Product } from "@/lib/productTypes"; // Import the Product type
+import FilterDropdown from "./FilterDropdown"; // Import the FilterDropdown component
 
 interface FilterSectionProps {
-  setFilter: React.Dispatch<React.SetStateAction<string | null>>;
+  setCategoryFilter: React.Dispatch<React.SetStateAction<string | null>>;
+  setYearFilter: React.Dispatch<React.SetStateAction<string | null>>;
   productsData: Product[];
+  resetFilters: () => void;
+  selectedCategory: string;
+  selectedYear: string;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedYear: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
-  setFilter,
+  setYearFilter,
+  setCategoryFilter,
   productsData,
+  resetFilters,
+  selectedCategory,
+  selectedYear,
+  setSelectedCategory,
+  setSelectedYear,
 }) => {
-  const [isOpen, setIsOpen] = useState(false); // State to manage dropdown open/close
-  const [selectedCategory, setSelectedCategory] = useState("all"); // Default selected category is "all"
 
-  // Extract unique categories from productsData
-  const categories = useMemo(() => {
-    const uniqueCategories = Array.from(
-      new Set(productsData.map((product) => product.category))
-    );
-    return uniqueCategories;
-  }, [productsData]);
+  // Get unique categories and years from productsData
+  const categories = Array.from(
+    new Set(
+      productsData
+        .map((product) => product.category)
+        .filter((category) => category !== undefined)
+    )
+  );
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    setFilter(category === "all" ? null : category); // Reset filter to null if "all" is selected
-    setIsOpen(false); // Close the dropdown after selection
-  };
+  const years = Array.from(
+    new Set(
+      productsData
+        .filter((product) => product.year)
+        .map((product) => product.year!.toString())
+    )
+  );
 
+  
   return (
-    <div className="container mx-auto py-4 sm:py-8 px-4">
-      {/* Custom Category Filter Dropdown */}
-      <div className="relative flex justify-center items-center border border-gray-300 dark:border-stone-700 w-fit">
-        <div
-          className="bg-transparent text-blackTwo dark:text-whiteTwo focus:outline-none focus:ring-0 cursor-pointer p-1 pl-3 pr-7 rounded-lg text-md lg:text-lg xl:text-xl appearance-none w-[230px]"
-          onMouseDown={(e) => e.preventDefault()} // Prevent default dropdown opening on click
-          onMouseUp={() => setIsOpen(!isOpen)} // Open/close on mouse release
-        >
-          <span>
-            {selectedCategory === "all"
-              ? "Select a Category"
-              : selectedCategory}
-          </span>
-          <DropdownArrowSVG isOpen={isOpen} />
-        </div>
+    <div className="flex flex-col xl:flex-row gap-4">
+      <div className="flex flex-wrap gap-4">
+        {/* Category Filter Dropdown */}
+        <FilterDropdown
+          label="Category"
+          options={[...categories]}
+          selectedOption={selectedCategory}
+          setSelectedOption={setSelectedCategory}
+          setFilter={setCategoryFilter}
+        />
 
-        {/* Custom Dropdown Options */}
-        {isOpen && (
-          <ul className="absolute top-7 z-20 w-full mt-2 bg-white dark:bg-blackOne border border-gray-300 dark:border-stone-700 shadow-lg">
-            <li
-              className="cursor-pointer rounded-lg text-md lg:text-md hover:bg-gray-100 dark:hover:bg-blackTwo p-2 py-1"
-              onClick={() => handleCategoryChange("all")}
-            >
-              Reset Filters
-            </li>
-            <li className="border-t border-gray-300 dark:border-stone-800"></li>
-            {categories.map(
-              (category) =>
-                category && (
-                  <li
-                    key={category}
-                    className="cursor-pointer text-md lg:text-md rounded-lg hover:bg-gray-100 dark:hover:bg-blackTwo p-2 py-1"
-                    onClick={() => handleCategoryChange(category)}
-                  >
-                    {category}
-                  </li>
-                )
-            )}
-          </ul>
-        )}
+        {/* Year Filter Dropdown */}
+        <FilterDropdown
+          label="Year"
+          options={[...years]}
+          selectedOption={selectedYear}
+          setSelectedOption={setSelectedYear}
+          setFilter={setYearFilter}
+        />
       </div>
+      {/* Reset Filters Button */}
+      <button
+        onClick={resetFilters}
+        className="px-6 py-2 w-[230px] lg:w-fit bg-primary text-white rounded-md hover:bg-red-600 transition-all duration-300"
+      >
+        Reset Filters
+      </button>
     </div>
   );
 };

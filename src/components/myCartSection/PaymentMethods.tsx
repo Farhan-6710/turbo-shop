@@ -20,7 +20,7 @@ const PaymentMethods: React.FC = () => {
           />
         </div>
       </div>
-      <Link className="" href="tel:4039936742"><p className="btn-primary px-10 py-4 bg-primary mt-2 text-center font-semibold text-white">BUY NOW</p></Link>
+      <Link className="" href="tel:4039936742"><p className="btn-primary px-10 py-4 bg-primary mt-4 text-center font-semibold text-white">CALL TO BUY NOW</p></Link>
     </div>
   );
 };

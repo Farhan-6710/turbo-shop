@@ -5,9 +5,10 @@ import { Product } from "@/lib/productTypes";
 import useCartStore from "@/store/useCartStore"; // Import the cart store
 import NotificationPopup from "@/components/extras/NotificationPopup"; // Import the NotificationPopup component
 import QuantityManagement from "./QuantityManegement"; // Import the QuantityManagement child component
+import Link from "next/link";
 
 interface CartItemProps {
-  cartItem: { product: Product; side: "left" | "right" }; // Accept item with product and side
+  cartItem: { product: Product; part: "left" | "right" }; // Accept item with product and side
   prices: {
     leftCurrent: string;
     leftOriginal: string;
@@ -56,7 +57,7 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, prices, sideLabel }) => {
 
   // Handle item removal after confirmation
   const handleConfirmRemove = () => {
-    removeFromCart(product, cartItem.side);
+    removeFromCart(product, cartItem.part);
     setNotification({ message: "", visible: false }); // Hide notification
   };
 
@@ -66,7 +67,7 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, prices, sideLabel }) => {
   };
 
   // Get quantity of product in cart
-  const quantity = getProductQuantity(product, cartItem.side);
+  const quantity = getProductQuantity(product, cartItem.part);
 
   return (
     <>
@@ -86,10 +87,26 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, prices, sideLabel }) => {
           />
         </div>
         <div className="flex flex-col justify-center items-center xl:items-start w-full xl:w-8/12 xl:pl-4 mt-4 xl:mt-0">
-          <h2 className="text-center xl:text-left text-lg font-semibold text-gray-800 dark:text-gray-200">
-            <span className="text-xl text-primary block">{product.brand} </span>{" "}
-            {product.modelName}
-          </h2>
+          {product.brand ? (
+            <Link
+              href={`/${product.brand.toLowerCase()}-products/${product.id}`}
+            >
+              <h2 className="text-center xl:text-left text-lg font-semibold text-gray-800 dark:text-gray-200">
+                <span className="text-xl text-primary block">
+                  {product.brand}{" "}
+                </span>{" "}
+                {product.modelName}
+              </h2>
+            </Link>
+          ) : (
+            <h2 className="text-center xl:text-left text-lg font-semibold text-gray-800 dark:text-gray-200">
+              <span className="text-xl text-primary block">
+                {product.brand}{" "}
+              </span>{" "}
+              {product.modelName}
+            </h2> // Fallback content if `product.brand` is missing
+          )}
+
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {partNumber ? `${sideLabel} ${partNumber}` : "Part Number : N/A"}
           </p>
@@ -105,7 +122,7 @@ const CartItem: React.FC<CartItemProps> = ({ cartItem, prices, sideLabel }) => {
         <div className="flex flex-col xs:flex-row items-center xl:space-x-4 xl:w-auto mt-4 xl:mt-0 xs:gap-4 xl:gap-0">
           <QuantityManagement
             product={product}
-            side={cartItem.side}
+            part={cartItem.part}
             quantity={quantity}
           />
           <button

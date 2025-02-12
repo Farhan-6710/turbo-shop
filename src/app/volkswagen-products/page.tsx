@@ -1,6 +1,6 @@
 "use client";
 
-import ProductsSection from "@/components/products-listing/ProductsListSection";
+import ProductsSection from "@/components/products-listing/ProductsSection";
 import React from "react";
 import { volkswagenProductsData } from "@/data/products-data/volkswagenProductsData";
 import HeaderTop from "@/components/header/HeaderTop";

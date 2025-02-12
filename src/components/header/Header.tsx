@@ -101,9 +101,11 @@ const Header: React.FC = () => {
               isOpen={isOpen}
             />
             <ModeToggle />
-            <span className="pl-4 text-gray-900 dark:text-whiteOne font-medium">
-              403-993-6742
-            </span>
+            <Link href="tel:403-993-6742">
+              <span className="pl-4 text-gray-900 dark:text-whiteOne font-medium">
+                403-993-6742
+              </span>
+            </Link>
           </div>
 
           {/* Mobile Menu Button (Visible on <xl screens) */}

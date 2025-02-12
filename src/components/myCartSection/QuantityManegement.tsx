@@ -4,20 +4,20 @@ import { Product } from "@/lib/productTypes"; // Import the Product type
 
 interface QuantityManagementProps {
   product: Product; // Use the full Product type
-  side: "left" | "right"; // Side of the product
+  part: "left" | "right"; // Side of the product
   quantity: number; // Current quantity of the product in the cart
 }
 
-const QuantityManagement: React.FC<QuantityManagementProps> = ({ product, side, quantity }) => {
+const QuantityManagement: React.FC<QuantityManagementProps> = ({ product, part, quantity }) => {
   const { increaseQuantity, decreaseQuantity } = useCartStore(); // Use store methods
 
   const handleIncrease = () => {
-    increaseQuantity(product, side); // Increase quantity
+    increaseQuantity(product, part); // Increase quantity
   };
 
   const handleDecrease = () => {
     if (quantity > 1) {
-      decreaseQuantity(product, side); // Decrease quantity if greater than 1
+      decreaseQuantity(product, part); // Decrease quantity if greater than 1
     }
   };
 

@@ -14,7 +14,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, images }) => {
   const prices = product.prices[currency.toLowerCase() as "usd" | "cad"];
 
   return (
-    <div className="bg-white dark:bg-blackOne text-blackOne dark:text-white border-b border-gray-200 dark:border-stone-800">
+    <div className="bg-white dark:bg-blackOne text-blackOne dark:text-white">
       <div className="container mx-auto py-10 2xl:py-20 flex flex-col xl:flex-row gap-8 items-center justify-center">
         
         {/* Carousel Section */}

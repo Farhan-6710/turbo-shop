@@ -42,6 +42,10 @@ export function SelectVehicleMake() {
   // Dynamically set the top position based on the current path
   const buttonTopPosition = isMounted ? (pathname === "/" ? "top-[155px]" : "top-[265px]") : "top-[155px]";  // Default to a valid position before mount
 
+  if (!isMounted) {
+    return null; // Render nothing until the component is loaded
+  }
+
   return (
     <>
       {/* Conditionally render the button to avoid scroll issues */}

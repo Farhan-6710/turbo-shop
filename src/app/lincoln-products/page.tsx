@@ -1,6 +1,6 @@
 "use client";
 
-import ProductsSection from "@/components/products-listing/ProductsListSection";
+import ProductsSection from "@/components/products-listing/ProductsSection";
 import React from "react";
 import { lincolnProductsData } from "@/data/products-data/lincolnProductsData";
 import HeaderTop from "@/components/header/HeaderTop";
