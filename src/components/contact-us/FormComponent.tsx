@@ -57,6 +57,9 @@ const FormComponent = () => {
               <option className="dark:bg-blackOne">
                 Custom Turbo Solution
               </option>
+              <option className="dark:bg-blackOne">
+                Turbo Repair with Shipping
+              </option>
               <option className="dark:bg-blackOne">Others</option>
             </select>
           </div>

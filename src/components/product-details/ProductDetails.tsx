@@ -15,7 +15,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, images }) => {
 
   return (
     <div className="bg-white dark:bg-blackOne text-blackOne dark:text-white">
-      <div className="container mx-auto py-10 2xl:py-20 flex flex-col xl:flex-row gap-8 items-center justify-center">
+      <div className="container mx-auto py-10 2xl:py-20 flex flex-col xl:flex-row gap-8 items-center justify-center pl-4">
         
         {/* Carousel Section */}
           <SpecialCarousel images={images} />
